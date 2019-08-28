@@ -25,11 +25,6 @@ find_mola_package(mola-kernel)
 mola_find_package_or_return(roscpp)
 mola_find_package_or_return(sensor_msgs)
 
-# These ones should not be needed if only using cmake exported targets in ROS,
-# but I'm not sure it's done for all current ROS1 packages, so...
-include_directories(SYSTEM ${roscpp_INCLUDE_DIRS})
-include_directories(SYSTEM ${sensor_msgs_INCLUDE_DIRS})
-
 # -----------------------
 # define lib:
 file(GLOB_RECURSE LIB_SRCS src/*.cpp src/*.h)
