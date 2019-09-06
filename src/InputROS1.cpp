@@ -45,7 +45,7 @@ void InputROS1::initialize(const std::string& cfg_block)
     // Mandatory parameters:
     auto c = YAML::Load(cfg_block);
 
-    ENSURE_YAML_ENTRY_EXISTS(c, "params");
+    ensureYamlEntryExists(c, "params");
     auto cfg = c["params"];
     MRPT_LOG_DEBUG_STREAM("Initializing with these params:\n" << cfg);
 
@@ -71,9 +71,9 @@ void InputROS1::initialize(const std::string& cfg_block)
 
     for (auto topic : ds_subscribe)
     {
-        ENSURE_YAML_ENTRY_EXISTS(topic, "topic");
-        ENSURE_YAML_ENTRY_EXISTS(topic, "type");
-        ENSURE_YAML_ENTRY_EXISTS(topic, "output_sensor_label");
+        ensureYamlEntryExists(topic, "topic");
+        ensureYamlEntryExists(topic, "type");
+        ensureYamlEntryExists(topic, "output_sensor_label");
 
         const auto topic_name = topic["topic"].as<std::string>();
         const auto type       = topic["type"].as<std::string>();
